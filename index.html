@@ -5,61 +5,96 @@
 
   <style>
     html {
-  scroll-behavior: smooth;
-}
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial;
       margin: 0;
-      background: #f4f4f4;
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
     }
 
     nav {
-      background: #222;
-      padding: 10px;
+      background: #020617;
+      padding: 15px;
       text-align: center;
+      position: sticky;
+      top: 0;
     }
 
     nav a {
       color: white;
-      margin: 0 15px;
+      margin: 0 20px;
       text-decoration: none;
       font-weight: bold;
     }
 
     header {
       text-align: center;
-      padding: 30px;
-      background: #333;
-      color: white;
+      padding: 50px;
     }
 
     header img {
-      width: 120px;
+      width: 130px;
       border-radius: 50%;
-      margin-top: 10px;
+      border: 3px solid white;
     }
 
     section {
-      padding: 20px;
+      padding: 40px;
+    }
+
+    h2 {
+      border-bottom: 2px solid #38bdf8;
+      display: inline-block;
+      padding-bottom: 5px;
     }
 
     .project {
-      background: white;
+      background: #1e293b;
       padding: 15px;
-      margin: 10px 0;
+      margin: 15px 0;
       border-radius: 10px;
       transition: 0.3s;
     }
 
     .project:hover {
       transform: scale(1.05);
+      background: #334155;
+    }
+
+    /* Skills */
+    .skill {
+      margin: 10px 0;
+    }
+
+    .bar {
+      background: #334155;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .bar div {
+      height: 10px;
+      background: #38bdf8;
+    }
+
+    /* Button */
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #38bdf8;
+      color: black;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
     }
 
     footer {
-      background: #222;
-      color: white;
       text-align: center;
-      padding: 10px;
+      padding: 15px;
+      background: #020617;
     }
   </style>
 </head>
@@ -71,20 +106,23 @@
   <a href="#">Home</a>
   <a href="#about">About</a>
   <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
   <a href="#contact">Contact</a>
 </nav>
 
 <!-- Header -->
 <header>
   <h1>Krrish Joshi</h1>
-  <p>CSE Student | Web Developer</p>
-  <img src="my pic.jpg" alt="My Photo">
+  <p>Aspiring Software Developer 🚀</p>
+  <img src="profile.jpg">
+  <br>
+  <a href="#" class="btn">Download Resume</a>
 </header>
 
 <!-- About -->
 <section id="about">
   <h2>About Me</h2>
-  <p>I am learning web development and love solving coding problems.</p>
+  <p>I am a CSE student passionate about coding, web development and problem solving.</p>
 </section>
 
 <!-- Projects -->
@@ -93,12 +131,33 @@
 
   <div class="project">
     <h3>Library Management System</h3>
-    <p>Built using C++.</p>
+    <p>Built using C++ and OOP concepts.</p>
   </div>
 
   <div class="project">
     <h3>N-Queens Problem</h3>
     <p>Backtracking algorithm implementation.</p>
+  </div>
+
+</section>
+
+<!-- Skills -->
+<section id="skills">
+  <h2>Skills</h2>
+
+  <div class="skill">
+    <p>C++</p>
+    <div class="bar"><div style="width: 80%"></div></div>
+  </div>
+
+  <div class="skill">
+    <p>HTML</p>
+    <div class="bar"><div style="width: 70%"></div></div>
+  </div>
+
+  <div class="skill">
+    <p>JavaScript</p>
+    <div class="bar"><div style="width: 50%"></div></div>
   </div>
 
 </section>
@@ -111,7 +170,7 @@
 
 <!-- Footer -->
 <footer>
-  <p>© 2026 Krrish</p>
+  <p>© 2026 Krrish | All Rights Reserved</p>
 </footer>
 
 </body>
