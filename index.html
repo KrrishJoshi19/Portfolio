@@ -44,6 +44,13 @@
     section {
       padding: 40px;
     }
+    h1 {
+  text-shadow: 0 0 10px #38bdf8;
+}
+
+.btn:hover {
+  box-shadow: 0 0 15px #38bdf8;
+}
 
     h2 {
       border-bottom: 2px solid #38bdf8;
@@ -96,6 +103,9 @@
       padding: 15px;
       background: #020617;
     }
+    .project:hover {
+  transform: translateY(-10px) scale(1.05);
+}
   </style>
 </head>
 
@@ -112,6 +122,7 @@
 
 <!-- Header -->
 <header>
+  <p><span id="typing"></span></p>
   <h1>Krrish Joshi</h1>
   <p>Aspiring Software Developer 🚀</p>
   <img src="my pic.jpg">
@@ -165,8 +176,19 @@
 <!-- Contact -->
 <section id="contact">
   <h2>Contact</h2>
+  <a href="mailto:your@email.com" class="btn">Email Me</a>
   <p>Email: your@email.com</p>
 </section>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+<script>
+var typed = new Typed("#typing", {
+  strings: ["CSE Student 💻", "Web Developer 🚀", "Problem Solver 🔥"],
+  typeSpeed: 50,
+  backSpeed: 30,
+  loop: true
+});
+</script>
 
 <!-- Footer -->
 <footer>
