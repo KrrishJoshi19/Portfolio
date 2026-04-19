@@ -1,257 +1,463 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Krrish Portfolio</title>
-  
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krrish Joshi | Portfolio</title>
   <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(15, 23, 42, 0.9);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-strong: #22d3ee;
+      --radius: 24px;
+      --shadow: 0 30px 80px rgba(8, 16, 33, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     html {
       scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
-      font-family: Arial;
-      background: #0f172a;
-      color: white;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, rgba(56,189,248,0.12), transparent 30%),
+                  linear-gradient(180deg, #020617 0%, #0b1020 45%, #020617 100%);
+      color: var(--text);
+      min-height: 100vh;
     }
-    nav a {
-  position: relative;
-}
 
-nav a::after {
-  content: '';
-  width: 0;
-  height: 2px;
-  background: #38bdf8;
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  transition: 0.3s;
-}
-
-nav a:hover::after {
-  width: 100%;
-}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
     nav {
-      background: #020617;
-      padding: 15px;
-      text-align: center;
       position: sticky;
       top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 18px 24px;
+      background: rgba(3, 8, 22, 0.95);
+      border-bottom: 1px solid rgba(56,189,248,0.12);
+      backdrop-filter: blur(14px);
     }
 
     nav a {
-      color: white;
-      margin: 0 20px;
+      color: var(--text);
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: color 0.25s ease;
     }
 
-    header {
-      text-align: center;
-      padding: 50px;
+    nav a:hover,
+    nav a:focus-visible {
+      color: var(--accent);
     }
-    header {
-  text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #020617, #0f172a, #020617);
-}
 
-    header img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #38bdf8;
-  box-shadow: 0 0 20px rgba(56,189,248,0.6);
-  transition: 0.3s;
-}
-
-header img:hover {
-  transform: scale(1.08);
-}
-    section {
-      padding: 40px;
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 36px 0 80px;
     }
-    h1 {
-  text-shadow: 0 0 10px #38bdf8;
-}
 
-.btn:hover {
-  box-shadow: 0 0 15px #38bdf8;
-}
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 40px;
+      padding: 60px 0 40px;
+    }
 
-    h2 {
-      border-bottom: 2px solid #38bdf8;
+    .hero-copy h1 {
+      font-size: clamp(2.75rem, 3.5vw, 4.5rem);
+      margin: 0;
+      line-height: 1.02;
+    }
+
+    .hero-copy p {
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    .hero-copy .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: none;
+      color: #020617;
+      text-decoration: none;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      box-shadow: 0 18px 40px rgba(56,189,248,0.2);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 48px rgba(56,189,248,0.28);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      background: rgba(15, 23, 42, 0.82);
+      border: 1px solid rgba(56,189,248,0.14);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 24%);
+      pointer-events: none;
+    }
+
+    .hero-visual img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(56,189,248,0.18);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+    }
+
+    .section-heading::before {
+      content: '';
       display: inline-block;
-      padding-bottom: 5px;
+      width: 44px;
+      height: 1px;
+      background: rgba(56,189,248,0.45);
     }
 
-    .project {
-  background: rgba(30, 41, 59, 0.6);
-  backdrop-filter: blur(10px);
-  padding: 20px;
-  margin: 15px 0;
-  border-radius: 15px;
-  transition: 0.3s;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.project:hover {
-  transform: translateY(-10px) scale(1.05);
-}
-
-
-
-    /* Skills */
-    .bar div {
-  height: 10px;
-  background: #38bdf8;
-  animation: load 2s ease-in-out;
-}
-
-@keyframes load {
-  from { width: 0; }
-}
-    .skill {
-      margin: 10px 0;
+    section {
+      margin-top: 60px;
     }
 
-    .bar {
-      background: #334155;
+    .panel {
+      background: var(--panel);
+      border: 1px solid rgba(148,163,184,0.12);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px;
+      backdrop-filter: blur(20px);
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .detail-card {
+      padding: 22px;
       border-radius: 20px;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .detail-card h3 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .detail-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 0.95rem;
+    }
+
+    .project-grid,
+    .skills-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .project-card,
+    .skill-card,
+    .experience-card {
+      border-radius: 22px;
+      padding: 28px;
+      background: rgba(15, 23, 42, 0.82);
+      border: 1px solid rgba(148,163,184,0.08);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .project-card:hover,
+    .skill-card:hover,
+    .experience-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56,189,248,0.24);
+    }
+
+    .project-card h3,
+    .skill-card h3,
+    .experience-card h3 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      color: white;
+    }
+
+    .project-card p,
+    .skill-card p,
+    .experience-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 0.97rem;
+    }
+
+    .skill-progress {
+      margin-top: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .skill-bar {
+      display: grid;
+      gap: 6px;
+    }
+
+    .skill-bar label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .skill-track {
+      height: 12px;
+      background: rgba(148,163,184,0.14);
+      border-radius: 999px;
       overflow: hidden;
     }
 
-    .bar div {
-      height: 10px;
-      background: #38bdf8;
+    .skill-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, rgba(56,189,248,0.95), rgba(34,211,238,0.95));
     }
 
-    /* Button */
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #38bdf8;
-      color: black;
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: start;
+      margin-top: 24px;
+    }
+
+    .contact-panel {
+      display: grid;
+      gap: 18px;
+    }
+
+    .contact-panel a,
+    .contact-panel p {
+      color: var(--muted);
+    }
+
+    .contact-panel a {
       text-decoration: none;
-      border-radius: 5px;
-      margin-top: 10px;
+      color: var(--accent);
     }
 
-    footer {
+    .footer {
       text-align: center;
-      padding: 15px;
-      background: #020617;
+      padding: 28px 0 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
-    .project:hover {
-  transform: translateY(-10px) scale(1.05);
-}
+
+    @media (max-width: 900px) {
+      .hero,
+      .details-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      nav {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .container {
+        padding: 24px 0 60px;
+      }
+
+      .hero-copy {
+        text-align: center;
+      }
+
+      .hero-copy .hero-actions {
+        justify-content: center;
+      }
+    }
   </style>
 </head>
-
 <body>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<!-- Navbar -->
-<nav>
-  <a href="#">Home</a>
-  <a href="#about">About</a>
-  <a href="#projects">Projects</a>
-  <a href="#skills">Skills</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <main class="container">
+    <section id="home" class="hero">
+      <div class="hero-copy">
+        <p class="section-heading">Professional Portfolio</p>
+        <h1>Hi, I’m <strong>Krrish Joshi</strong>.</h1>
+        <p>I design and build polished digital experiences with a strong focus on clean interfaces, scalable code, and real-world problem solving. My work blends data structures, web development, and dependable user journeys.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#projects">See My Work</a>
+          <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+        </div>
+      </div>
 
-<!-- Header -->
-<header style="text-align:center; padding:80px 20px;">
- <h1>Hi, I'm Krrish Joshi 👋</h1>
-<h2><span id="typing"></span></h2>
-<p>I build modern, responsive and user-friendly web applications.</p>
+      <div class="hero-visual">
+        <img src="photo.jpeg" alt="Krrish Joshi portrait">
+      </div>
+    </section>
 
- <img src="photo.jpeg" 
-     style="width:140px; height:140px; border-radius:50%; margin-top:20px; object-fit:cover;">
+    <section id="about">
+      <div class="section-heading">About Me</div>
+      <div class="panel">
+        <p>As a Computer Science student with experience in competitive programming, system design, and full-stack development, I turn ambitious ideas into reliable applications. My strengths include C++, JavaScript, responsive UI design, and algorithm-driven solutions.</p>
+        <div class="details-grid">
+          <div class="detail-card">
+            <h3>Years of Learning</h3>
+            <p>Strong foundation in core CS concepts, data structures, and object-oriented programming.</p>
+          </div>
+          <div class="detail-card">
+            <h3>Problem Solving</h3>
+            <p>Experience building algorithmic solutions for real-world tasks such as scheduling and optimization.</p>
+          </div>
+          <div class="detail-card">
+            <h3>Collaboration</h3>
+            <p>Comfortable working in teams, sharing ideas, and delivering polished, production-ready results.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <br><br>
+    <section id="projects">
+      <div class="section-heading">Featured Projects</div>
+      <div class="project-grid">
+        <article class="project-card">
+          <h3>Library Management System</h3>
+          <p>A C++ desktop application with object-oriented architecture, inventory tracking, search, and user-friendly commands for admin and borrower workflows.</p>
+        </article>
+        <article class="project-card">
+          <h3>N-Queens Solver</h3>
+          <p>A backtracking algorithm implementation that finds all valid queens placements efficiently and demonstrates optimized recursion and board state handling.</p>
+        </article>
+        <article class="project-card">
+          <h3>Responsive Portfolio</h3>
+          <p>A modern personal portfolio website built with semantic HTML, custom CSS, and interactive animated components for professional presentation.</p>
+        </article>
+      </div>
+    </section>
 
-  <a href="#projects" class="btn">View Projects</a>
-  <a href="resume.pdf" class="btn">Download Resume</a>
-</header>
+    <section id="skills">
+      <div class="section-heading">Key Skills</div>
+      <div class="panel skill-progress">
+        <div class="skill-bar">
+          <label>C++ <span>85%</span></label>
+          <div class="skill-track"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <label>HTML / CSS <span>80%</span></label>
+          <div class="skill-track"><div class="skill-fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <label>JavaScript <span>70%</span></label>
+          <div class="skill-track"><div class="skill-fill" style="width:70%"></div></div>
+        </div>
+        <div class="skill-bar">
+          <label>Problem Solving <span>90%</span></label>
+          <div class="skill-track"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+      </div>
+    </section>
 
-<!-- About -->
-<section id="about">
-  <h2>About Me</h2>
-  <p>I am a CSE student passionate about coding, web development and problem solving.</p>
-</section>
+    <section id="experience">
+      <div class="section-heading">Experience</div>
+      <div class="experience-card">
+        <h3>Software Development Focus</h3>
+        <p>Working across academic projects and independent builds, I create solutions that balance functionality with user experience. I enjoy translating specifications into clean interfaces and efficient logic.</p>
+      </div>
+      <div class="experience-card">
+        <h3>Project Highlights</h3>
+        <p>From algorithmic solvers to interface-rich applications, I prioritize maintainable code, responsive layouts, and clear documentation that helps teammates and stakeholders move quickly.</p>
+      </div>
+    </section>
 
-<!-- Projects -->
-<section id="projects">
-  <h2>Projects</h2>
+    <section id="contact">
+      <div class="section-heading">Get In Touch</div>
+      <div class="contact-grid">
+        <div class="contact-panel panel">
+          <p>Ready to collaborate on your next project? I’m available for internships and freelance development work.</p>
+          <p><strong>Email</strong><br><a href="mailto:joshikrrish196@gmail.com">joshikrrish196@gmail.com</a></p>
+          <p><strong>Location</strong><br>India</p>
+        </div>
+        <div class="panel">
+          <h3>Contact</h3>
+          <p>Send a note and I’ll respond within 24 hours.</p>
+          <a class="btn" href="mailto:joshikrrish196@gmail.com">Email Me</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <div class="project">
-    <h3>Library Management System</h3>
-    <p>Built using C++ and OOP concepts.</p>
-  </div>
-
-  <div class="project">
-    <h3>N-Queens Problem</h3>
-    <p>Backtracking algorithm implementation.</p>
-  </div>
-
-</section>
-
-<!-- Skills -->
-<section id="skills">
-  <h2>Skills</h2>
-
-  <div class="skill">
-    <p>C++</p>
-    <div class="bar"><div style="width: 85%"></div></div>
-  </div>
-
-  <div class="skill">
-    <p>HTML/CSS</p>
-    <div class="bar"><div style="width: 75%"></div></div>
-  </div>
-
-  <div class="skill">
-    <p>JavaScript</p>
-    <div class="bar"><div style="width: 60%"></div></div>
-  </div>
-</section>
-
-<!-- Contact -->
-<section id="contact">
-  <h2>Contact</h2>
-  <a href="mailto:joshikrrish196@gmail.com" class="btn">Email Me</a>
-  <p>Email: joshikrrish196@gmail.com</p>
-</section>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
-<script>
-var typed = new Typed("#typing", {
-  strings: ["CSE Student 💻", "Web Developer 🚀", "Problem Solver 🔥"],
-  typeSpeed: 50,
-  backSpeed: 30,
-  loop: true
-});
-</script>
-<script src="https://unpkg.com/scrollreveal"></script>
-
-<script>
-ScrollReveal().reveal('section', {
-  distance: '50px',
-  duration: 1000,
-  origin: 'bottom',
-  interval: 200
-});
-</script>
-
-<!-- Footer -->
-<footer>
-  <p>© 2026 Krrish | All Rights Reserved</p>
-</footer>
-
+  <footer class="footer">© 2026 Krrish Joshi · Built for clarity, speed, and growth.</footer>
 </body>
 </html>
