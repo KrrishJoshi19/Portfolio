@@ -651,10 +651,132 @@
       }
     }
 
+    /* LOADER - Premium Design */
+    .loader-wrapper{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:linear-gradient(
+        135deg,
+        var(--bg) 0%,
+        rgba(7,11,20,0.95) 50%,
+        var(--bg) 100%
+      );
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      opacity:1;
+      transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    .loader-wrapper.hidden{
+      opacity:0;
+      pointer-events:none;
+    }
+
+    .loader-container{
+      position:relative;
+      width:120px;
+      height:120px;
+      margin-bottom:40px;
+    }
+
+    /* Main rotating circle */
+    .loader-circle{
+      position:absolute;
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      border:3px solid transparent;
+      border-top:3px solid var(--primary);
+      border-right:3px solid var(--secondary);
+      animation:spin-smooth 2s linear infinite;
+    }
+
+    .loader-circle:nth-child(2){
+      width:85px;
+      height:85px;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      border-top:3px solid var(--secondary);
+      border-right:3px solid rgba(56,189,248,0.3);
+      animation:spin-smooth 1.5s linear infinite reverse;
+    }
+
+    .loader-circle:nth-child(3){
+      width:55px;
+      height:55px;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      border:2px solid rgba(139,92,246,0.4);
+      border-top:2px solid var(--secondary);
+      animation:spin-smooth 1s linear infinite;
+    }
+
+    @keyframes spin-smooth{
+      0%{ transform:rotate(0deg); }
+      100%{ transform:rotate(360deg); }
+    }
+
+    /* Center dot */
+    .loader-dot{
+      position:absolute;
+      width:12px;
+      height:12px;
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      border-radius:50%;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      box-shadow:0 0 20px rgba(56,189,248,0.6);
+      z-index:10;
+    }
+
+    .loader-text{
+      font-size:1rem;
+      letter-spacing:3px;
+      color:var(--primary);
+      font-weight:700;
+      text-transform:uppercase;
+      animation:fade-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes fade-pulse{
+      0%,100%{ opacity:0.4; }
+      50%{ opacity:1; }
+    }
+
+    .loader-subtext{
+      font-size:0.75rem;
+      color:var(--muted);
+      letter-spacing:2px;
+      margin-top:12px;
+      text-transform:uppercase;
+      font-weight:600;
+    }
+
   </style>
 </head>
 
 <body>
+
+  <!-- LOADER -->
+  <div class="loader-wrapper" id="loaderWrapper">
+    <div class="loader-container">
+      <div class="loader-circle"></div>
+      <div class="loader-circle"></div>
+      <div class="loader-circle"></div>
+      <div class="loader-dot"></div>
+    </div>
+    <div class="loader-text">Loading</div>
+    <div class="loader-subtext">Building something awesome</div>
+  </div>
 
   <!-- NAVBAR -->
 
@@ -1106,6 +1228,22 @@
     );
 
     revealSections();
+
+    // PREMIUM LOADER
+    window.addEventListener('load',()=>{
+      const loaderWrapper = document.getElementById('loaderWrapper');
+      setTimeout(()=>{
+        loaderWrapper.classList.add('hidden');
+      },1200);
+    });
+
+    // Fallback: Hide loader after 3 seconds
+    setTimeout(()=>{
+      const loaderWrapper = document.getElementById('loaderWrapper');
+      if(!loaderWrapper.classList.contains('hidden')){
+        loaderWrapper.classList.add('hidden');
+      }
+    },3000);
 
   </script>
 
